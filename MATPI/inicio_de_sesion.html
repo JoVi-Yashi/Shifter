@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio Sesión | Matpi</title>
+  <link rel="icon" href="img/Favicon.png" />
+  <link rel="stylesheet" href="css/style1.css">
+</head>
+
+<body>
+  <header>
+    <img src="img/Matpi.jpg" alt="Logo" />
+  </header>
+
+  <main>
+    <section>
+      <div class="logo">
+        <img src="img/Logomatpi.png"Logo" />
+      </div>
+      <h2>Bienvenido</h2>
+      <form id="inicio_sesion" action="" method="post">
+        <div class="campo">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingresa tu usuario"
+            required pattern=".{4,}" maxlength="10" minlength="8" />
+        </div>
+        <div class="campo">
+          <label for="clave">Contraseña</label>
+          <input type="password" id="clave" name="clave" placeholder="Ingresa tu contraseña" required />
+        </div>
+        <div class="boton">
+          <input type="submit" name="boton" class="boton" value="¡Vamos!" />
+        </div>
+        <div class="crear-cuenta">
+          No tienes una cuenta?
+          <a href="a.html" class="forgot-password">Crea tu cuenta</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Matpi. Todos los derechos reservados.</p>
+    <ul class="footer-links">
+      <li><a href="#">Política de privacidad</a></li>
+      <li><a href="#">Términos de uso</a></li>
+    </ul>
+    <div class="social-login">
+      <p>Síguenos en:</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Matpiii/?locale=es_LA" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+            alt="Facebook" />
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/matpiii/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+          <span>Instagram</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=%2B573138525370" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

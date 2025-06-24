@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matpi</title>
+    <link rel="icon" href="img/Favicon.png" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="img/Logomatpi.png" alt="Logo" class="logo">
+    <div class="icon"><a href="inicio_de_sesion.html">👤</a></div>
+  </header>
+
+  <!-- CARRUSEL -->
+  <section class="carousel-container">
+    <div class="carousel-inner" id="carousel">
+      <img src="img/C1.jfif" alt="Burger 1">
+      <img src="img/C2.jfif" alt="Burger 2">
+      <img src="img/C3.jfif" alt="Burger 3">
+      <img src="img/C4.jfif" alt="Burger 4">
+      <img src="img/C5.jfif" alt="Burger 5">
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-button" onclick="prevSlide()">❮</button>
+      <button class="carousel-button" onclick="nextSlide()">❯</button>
+    </div>
+    <div class="carousel-indicators" id="indicators"></div>
+  </section>
+
+  <!-- DESTACADOS -->
+  <section class="productos">
+    <h2>Destacados</h2>
+    <div class="producto-lista">
+      <div class="producto">
+        <img src="img/Triple.jpeg" alt="Matpi L">
+        <div class="producto-info">
+          <h3>Matpi L</h3>
+          <p>Tres pisos de sabor..!</p>
+          <button class="btn-detalle">Ver detalles</button>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="img/T2.jpeg" alt="Hawaiana X">
+        <div class="producto-info">
+          <h3>Hawaiana X</h3>
+          <p>Sencilla pero sabrosa..!</p>
+          <button class="btn-detalle">Ver detalles</button>
+        </div>
+      </div>
+      <div class="producto">
+        <img src="img/T3.jpeg" alt="Criolla X">
+        <div class="producto-info">
+          <h3>Criolla X</h3>
+          <p>Un poco de maíz criollo..?</p>
+          <button class="btn-detalle">Ver detalles</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 Matpi. Todos los derechos reservados.</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="">Política de privacidad</a></li>
+      <li class="list-inline-item"><a href="">Términos de uso</a></li>
+    </ul>
+    <div class="social-login">
+      <p>Síguenos en:</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Matpiii/?locale=es_LA" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+          <p>Facebook</p>
+        </a>
+        <a href="https://www.instagram.com/matpiii/" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+          <p>Instagram</p>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=%2B573138525370" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          <p>WhatsApp</p>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const carousel = document.getElementById("carousel");
+    const totalSlides = carousel.children.length;
+    const indicators = document.getElementById("indicators");
+    let index = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${index * 100}vw)`;
+      updateIndicators();
+    }
+
+    function updateIndicators() {
+      indicators.innerHTML = "";
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("span");
+        if (i === index) dot.classList.add("active");
+        dot.onclick = () => { index = i; updateCarousel(); };
+        indicators.appendChild(dot);
+      }
+    }
+
+    function nextSlide() {
+      index = (index + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    setInterval(nextSlide, 5000); // cambia cada 5s
+    updateCarousel();
+  </script>
+</body>
+
+</html>
