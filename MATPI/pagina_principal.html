@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descubre las mejores hamburguesas de Matpi. Productos destacados, calidad y sabor garantizado.">
+  <meta name="keywords" content="hamburguesas, comida rápida, matpi, destacados">
   <title>Matpi</title>
-    <link rel="icon" href="img/Favicon.png" />
+  <link rel="icon" href="img/Favicon.png" />
+  <link rel="preload" href="img/Logomatpi.png" as="image">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -18,51 +21,52 @@
   </header>
 
   <!-- CARRUSEL -->
-  <section class="carousel-container">
-    <div class="carousel-inner" id="carousel">
-      <img src="img/C1.jfif" alt="Burger 1">
-      <img src="img/C2.jpg" alt="Burger 2">
-      <img src="img/C3.jpg" alt="Burger 3">
-      <img src="img/C4.jpg" alt="Burger 4">
-      <img src="img/C5.jpg" alt="Burger 5">
-    </div>
-    <div class="carousel-controls">
-      <button class="carousel-button" onclick="prevSlide()">❮</button>
-      <button class="carousel-button" onclick="nextSlide()">❯</button>
-    </div>
-    <div class="carousel-indicators" id="indicators"></div>
-  </section>
-
-  <!-- DESTACADOS -->
-  <section class="productos">
-    <h2>Destacados</h2>
-    <div class="producto-lista">
-      <div class="producto">
-        <img src="img/Triple.jpeg" alt="Matpi L">
-        <div class="producto-info">
-          <h3>Matpi L</h3>
-          <p>Tres pisos de sabor..!</p>
-          <button class="btn-detalle">Ver detalles</button>
+  <main>
+    <section class="carousel-container" aria-label="Galería de imágenes">
+      <div class="carousel-inner" id="carousel">
+        <img src="img/C1.jfif" alt="Burger img 1" loading="lazy">
+        <img src="img/C2.jpg" alt="Burger img 2" loading="lazy">
+        <img src="img/C3.jpg" alt="Burger img 3" loading="lazy">
+        <img src="img/C4.jpg" alt="Burger img 4" loading="lazy">
+        <img src="img/C5.jpg" alt="Burger img 5" loading="lazy">
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-button" onclick="prevSlide()">❮</button>
+        <button class="carousel-button" onclick="nextSlide()">❯</button>
+      </div>
+      <div class="carousel-indicators" id="indicators"></div>
+    </section>
+    <!-- DESTACADOS -->
+    <section class="productos" aria-labelledby="destacados-heading" >
+      <h2>Destacados</h2>
+      <div class="producto-lista">
+        <div class="producto">
+          <img src="img/Triple.jpeg" alt="Matpi L">
+          <div class="producto-info">
+            <h3>Matpi L</h3>
+            <p>Tres pisos de sabor..!</p>
+            <button class="btn-detalle">Ver detalles</button>
+          </div>
+        </div>
+        <div class="producto">
+          <img src="img/T2.jpeg" alt="Hawaiana X">
+          <div class="producto-info">
+            <h3>Hawaiana X</h3>
+            <p>Sencilla pero sabrosa..!</p>
+            <button class="btn-detalle">Ver detalles</button>
+          </div>
+        </div>
+        <div class="producto">
+          <img src="img/T3.jpeg" alt="Criolla X">
+          <div class="producto-info">
+            <h3>Criolla X</h3>
+            <p>Un poco de maíz criollo..?</p>
+            <button class="btn-detalle">Ver detalles</button>
+          </div>
         </div>
       </div>
-      <div class="producto">
-        <img src="img/T2.jpeg" alt="Hawaiana X">
-        <div class="producto-info">
-          <h3>Hawaiana X</h3>
-          <p>Sencilla pero sabrosa..!</p>
-          <button class="btn-detalle">Ver detalles</button>
-        </div>
-      </div>
-      <div class="producto">
-        <img src="img/T3.jpeg" alt="Criolla X">
-        <div class="producto-info">
-          <h3>Criolla X</h3>
-          <p>Un poco de maíz criollo..?</p>
-          <button class="btn-detalle">Ver detalles</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
@@ -89,42 +93,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- JS -->
-  <script>
-    const carousel = document.getElementById("carousel");
-    const totalSlides = carousel.children.length;
-    const indicators = document.getElementById("indicators");
-    let index = 0;
-
-    function updateCarousel() {
-      carousel.style.transform = `translateX(-${index * 100}vw)`;
-      updateIndicators();
-    }
-
-    function updateIndicators() {
-      indicators.innerHTML = "";
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement("span");
-        if (i === index) dot.classList.add("active");
-        dot.onclick = () => { index = i; updateCarousel(); };
-        indicators.appendChild(dot);
-      }
-    }
-
-    function nextSlide() {
-      index = (index + 1) % totalSlides;
-      updateCarousel();
-    }
-
-    function prevSlide() {
-      index = (index - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    }
-
-    setInterval(nextSlide, 5000); // cambia cada 5s
-    updateCarousel();
-  </script>
+  <script type="module" src="js/carousel.js"></script>
 </body>
-
 </html>
