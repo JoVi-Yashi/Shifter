@@ -133,7 +133,7 @@
         font-size: 0.9em;
     }
 
-    .boton input[type="submit"] {
+    .boton button[type="submit"] {
         margin: 1%;
         width: 100%;
         background-color: #ff6600;
@@ -146,7 +146,12 @@
         transition: background-color 0.3s;
     }
 
-    .boton input[type="submit"]:hover {
+    .boton button[type="submit"] > a{
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .boton button[type="submit"]:hover {
         background-color: #e65500;
     }
 
