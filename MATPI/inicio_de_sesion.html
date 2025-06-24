@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descubre las mejores hamburguesas de Matpi. Productos destacados, calidad y sabor garantizado.">
+  <meta name="keywords" content="hamburguesas, comida rápida, matpi, destacados">
   <title>Inicio Sesión | Matpi</title>
   <link rel="icon" href="img/Favicon.png" />
   <link rel="stylesheet" href="css/style1.css">
@@ -20,18 +22,21 @@
         <img src="img/Logomatpi.png" alt="logo" />
       </div>
       <h2>Bienvenido</h2>
-      <form id="inicio_sesion" action="" method="post">
+      <form id="inicio_sesion" method="post">
         <div class="campo">
-          <label for="usuario">Usuario</label>
-          <input type="text" id="numero_documento" name="numero_documento" placeholder="Ingresa tu usuario"
-            required pattern=".{4,}" maxlength="10" minlength="8" />
+          <label for="numero_documento">Usuario</label>
+          <input type="text" id="numero_documento" name="numero_documento" 
+                placeholder="Ingresa tu usuario" required 
+                pattern="[0-9]{8,10}" title="Debe contener entre 8 y 10 dígitos numéricos" />
         </div>
         <div class="campo">
           <label for="clave">Contraseña</label>
-          <input type="password" id="clave" name="clave" placeholder="Ingresa tu contraseña" required />
+          <input type="password" id="clave" name="clave" 
+                placeholder="Ingresa tu contraseña" required 
+                minlength="6" />
         </div>
         <div class="boton">
-          <input type="submit" name="boton" class="boton" value="¡Vamos!" />
+          <button type="submit" name="boton" class="boton">Ingresar</button>
         </div>
         <div class="crear-cuenta">
           No tienes una cuenta?
@@ -66,6 +71,7 @@
       </div>
     </div>
   </footer>
+  <script src="JS/Validacion.js"></script>
 </body>
 
 </html>
