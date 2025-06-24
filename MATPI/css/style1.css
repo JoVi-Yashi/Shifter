@@ -6,12 +6,37 @@
     }
 
     body {
-        background: url('Fondo.jpeg') no-repeat center center fixed;
+        background: url('../img/Fondo.jpeg') no-repeat center center fixed;
+        -webkit-backdrop-filter: blur(6px); /* Para compatibilidad con Safari */
+        backdrop-filter: blur(6px); /* Aplica el desenfoque */
         background-size: cover;
         color: #333;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+    }
+
+        /* Estilos para la barra de scroll */
+    ::-webkit-scrollbar {
+        width: 4px; /* Ancho de la barra vertical */
+        height: 12px; /* Altura de la barra horizontal */
+    }
+    
+    /* Estilo del track (fondo de la barra) */
+    ::-webkit-scrollbar-track {
+        background: #000000; /* Color de fondo */
+        border-radius: 10px;
+    }
+    
+    /* Estilo del thumb (la parte móvil de la barra) */
+    ::-webkit-scrollbar-thumb {
+        background: #424242; /* Color principal */
+        border-radius: 10px;
+    }
+    
+    /* Cambio de color al pasar el mouse */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #383838; /* Color al hacer hover */
     }
 
     header {
@@ -129,7 +154,7 @@
         background-color: #000;
         color: #fff;
         text-align: center;
-        padding: 30px 20px;
+        padding: 20px 20px;
     }
 
     footer p {

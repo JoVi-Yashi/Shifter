@@ -14,6 +14,29 @@
   font-family: var(--font-family);
 }
 
+/* Estilos para la barra de scroll */
+::-webkit-scrollbar {
+  width: 4px; /* Ancho de la barra vertical */
+  height: 12px; /* Altura de la barra horizontal */
+}
+
+/* Estilo del track (fondo de la barra) */
+::-webkit-scrollbar-track {
+  background: #000000; /* Color de fondo */
+  border-radius: 10px;
+}
+
+/* Estilo del thumb (la parte móvil de la barra) */
+::-webkit-scrollbar-thumb {
+  background: #424242; /* Color principal */
+  border-radius: 10px;
+}
+
+/* Cambio de color al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: #383838; /* Color al hacer hover */
+}
+
 html,
 body {
   width: 100%;
@@ -53,7 +76,7 @@ body {
 /* CARRUSEL */
 .carousel-container {
   width: 100vw;
-  height: 75vh;
+  height: 20%;
   overflow: hidden;
   position: relative;
 }
@@ -76,14 +99,13 @@ body {
   position: absolute;
   top: 50%;
   width: 100%;
-  margin: 25px;
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
   pointer-events: none;
 }
 
-.carousel-button {
+.carousel-button-prev {
   background: rgba(60, 60, 60, 0.5);
   border: none;
   color: white;
@@ -91,6 +113,19 @@ body {
   padding: 10px;
   cursor: pointer;
   pointer-events: all;
+  margin-left: 25px;
+}
+
+
+.carousel-button-next {
+  background: rgba(60, 60, 60, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  pointer-events: all;
+  margin-right: 25px;
 }
 
 .carousel-indicators {
@@ -205,29 +240,74 @@ body {
 
 /* FOOTER */
 footer {
+  background-color: #000;
+  color: #fff;
   text-align: center;
-  padding: 20px;
-  background-color: var(--secondary-color);
-  color: #ffffff;
+  padding: 20px 20px;
 }
 
-footer a {
-  color: #ffffff;
+footer p {
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ccc;
   text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
 }
 
-footer a:hover {
-  color: #d6d6d6ef;
+.footer-links a:hover {
+  color: orange;
 }
 
-.social-icons i {
-  font-size: 2rem;
-  margin: 0 10px;
-  transition: transform 0.3s;
+.social-login {
+  margin-top: 20px;
 }
 
-.social-icons i:hover {
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85em;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
   transform: scale(1.2);
+}
+
+.social-icons a:hover {
+  color: orange;
 }
 
 /* Responsive Design */

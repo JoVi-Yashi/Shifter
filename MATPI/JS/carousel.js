@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Event listeners para botones
-    document.querySelector('.carousel-button[onclick="prevSlide()"]').addEventListener('click', prevSlide);
-    document.querySelector('.carousel-button[onclick="nextSlide()"]').addEventListener('click', nextSlide);
+    document.querySelector('.carousel-button-prev[onclick="prevSlide()"]').addEventListener('click', prevSlide);
+    document.querySelector('.carousel-button-next[onclick="nextSlide()"]').addEventListener('click', nextSlide);
 
     // Inicialización
     updateCarousel();
