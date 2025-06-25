@@ -217,7 +217,7 @@ DELIMITER ;
 -- Trigger para evitar logros negativos
 DELIMITER $$
 
-CREATE TRIGGER before_insert_fideizacion
+CREATE TRIGGER before_insert_fidelizacion
 BEFORE INSERT ON fidelizacion
 FOR EACH ROW
 BEGIN
