@@ -65,6 +65,34 @@ foreign key (id_pedido) references pedido(id),
 foreign key(id_inventario) references inventario(id)
 );
 
+create table materia_prima(
+id tinyint unsigned primary key not null,
+descripcion varchar(255) not null,
+cantidad tinyint unsigned not null,
+fecha_ingreso date not null,
+fecha_vencimiento date not null
+);
+
+create table proveedor(
+id tinyint unsigned primary key not null,
+nombre varchar(255) not null,
+direccion varchar(255) not null,
+correo varchar(255) not null,
+telefono bigint(255) not null,
+id_usuario tinyint unsigned not null,
+foreign key (id_usuario) references usuario(id)
+);
+
+create table detalles_suministra(
+id tinyint unsigned primary key  not null,
+id_proveedor tinyint unsigned not null,
+id_materia_prima tinyint unsigned not null,
+cantidad mediumint unsigned not null,
+foreign key(id) references proveedor(id),
+foreign key(id) references materia_prima(id)
+);
+
+
 
 /*  -------------------------------------------------------------------------------------  */
 /*  --------------------------------------vistas-----------------------------------------  */
@@ -217,7 +245,7 @@ DELIMITER ;
 -- Trigger para evitar logros negativos
 DELIMITER $$
 
-CREATE TRIGGER before_insert_fideizacion
+CREATE TRIGGER before_insert_fidelizacion
 BEFORE INSERT ON fidelizacion
 FOR EACH ROW
 BEGIN
@@ -312,4 +340,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-

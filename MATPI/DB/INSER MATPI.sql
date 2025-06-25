@@ -49,30 +49,30 @@ INSERT INTO inventario (id, nombre_producto, descripcion, cantidad, valor, categ
 
 -- RESERVA
 INSERT INTO reserva (id, fecha, estado, id_usuario, cotizacion_inventario) VALUES
-(1, '2025-06-15', TRUE, 1, 1),
-(2, '2025-06-18', FALSE, 1, 2),
-(3, '2025-06-19', TRUE, 3, 3),
-(4, '2025-06-20', FALSE, 5, 4),
-(5, '2025-06-21', TRUE, 6, 5),
-(6, '2025-06-21', FALSE, 7, 6),
-(7, '2025-06-22', TRUE, 9, 7),
-(8, '2025-06-23', TRUE, 4, 8),
-(9, '2025-06-24', FALSE, 10, 9),
-(10, '2025-06-25', TRUE, 2, 10);
+(1, '2027-06-15', TRUE, 1, 1),
+(2, '2027-06-18', FALSE, 1, 2),
+(3, '2027-06-19', TRUE, 3, 3),
+(4, '2027-06-20', FALSE, 5, 4),
+(5, '2027-06-21', TRUE, 6, 5),
+(6, '2027-06-21', FALSE, 7, 6),
+(7, '2027-06-22', TRUE, 9, 7),
+(8, '2027-06-23', TRUE, 4, 8),
+(9, '2027-06-24', FALSE, 10, 9),
+(10, '2027-06-25', TRUE, 2, 10);
 
 
 -- PEDIDO
 INSERT INTO pedido (id, fecha, estado, valor, id_usuario) VALUES
-(1, '2025-06-10', TRUE, 26000, 1),
-(2, '2025-06-11', FALSE, 18000, 1),
-(3, '2025-06-12', TRUE, 32000, 3),
-(4, '2025-06-13', FALSE, 8000, 5),
-(5, '2025-06-14', TRUE, 15000, 6),
-(6, '2025-06-15', FALSE, 20000, 7),
-(7, '2025-06-16', TRUE, 10000, 9),
-(8, '2025-06-17', FALSE, 12000, 4),
-(9, '2025-06-18', TRUE, 9000, 10),
-(10, '2025-06-19', TRUE, 18000, 2);
+(1, '2027-06-10', TRUE, 26000, 1),
+(2, '2027-06-11', FALSE, 18000, 1),
+(3, '2027-06-12', TRUE, 32000, 3),
+(4, '2027-06-13', FALSE, 8000, 5),
+(5, '2027-06-14', TRUE, 15000, 6),
+(6, '2027-06-15', FALSE, 20000, 7),
+(7, '2027-06-16', TRUE, 10000, 9),
+(8, '2027-06-17', FALSE, 12000, 4),
+(9, '2027-06-18', TRUE, 9000, 10),
+(10, '2027-06-19', TRUE, 18000, 2);
 
 
 -- FACTURA
@@ -87,3 +87,27 @@ INSERT INTO factura (id_detalles, cantidad, valor_total, iva, id_pedido, id_inve
 (8, 1, 3000, 0.19, 7, 8),
 (9, 1, 9000, 0.19, 8, 9),
 (10, 2, 9000, 0.19, 9, 10);
+
+INSERT INTO materia_prima VALUES 
+(1, 'Carne de res', 50, '2025-06-20', '2025-07-10'),
+(2, 'Pan artesanal', 100, '2025-06-22', '2025-07-05'),
+(3, 'Queso cheddar', 40, '2025-06-21', '2025-07-15'),
+(4, 'Lechuga fresca', 30, '2025-06-24', '2025-06-30'),
+(5, 'Tomate', 30, '2025-06-24', '2025-07-01'),
+(6, 'Cebolla', 20, '2025-06-23', '2025-07-02'),
+(7, 'Papas criollas', 60, '2025-06-20', '2025-07-10'),
+(8, 'Salsas (BBQ, mostaza)', 25, '2025-06-20', '2025-07-30'),
+(9, 'Gaseosas', 100, '2025-06-25', '2026-06-25'),
+(10, 'Helado vainilla', 20, '2025-06-23', '2025-07-20');
+
+INSERT INTO proveedor VALUES 
+(1, 'Carnes Premium SAS', 'Cra 10 #20-30, Bogotá', 'contacto@carnespremium.com', 3215678901, 3),
+(2, 'Panadería Don Pan', 'Cll 40 #15-50, Medellín', 'ventas@donpan.com', 3102345678, 3),
+(3, 'Lácteos Andinos', 'Cra 25 #60-22, Cali', 'info@lacteosandinos.com', 3123456780, 3),
+(4, 'AgroVerduras', 'Cra 8 #12-12, Bucaramanga', 'servicio@agroverduras.com', 3114567890, 3),
+(5, 'Papas Colombia', 'Cll 70 #30-15, Pereira', 'contacto@papascolombia.com', 3135678902, 3),
+(6, 'Bebidas del Valle', 'Cra 15 #10-50, Cartagena', 'ventas@bebidasvalle.com', 3001234560, 3),
+(7, 'Heladería Fresca', 'Cll 50 #18-44, Neiva', 'info@heladeriafresca.com', 3019876543, 3),
+(8, 'Salsas La Roca', 'Cra 9 #22-60, Barranquilla', 'ventas@salsalaroca.com', 3106785432, 3),
+(9, 'Verduras del Campo', 'Cra 11 #25-60, Villavicencio', 'ventas@verdelcampo.com', 3137894560, 3),
+(10, 'Quesos el Paisa', 'Cll 19 #9-90, Manizales', 'info@quesospaisa.com', 3213214321, 3);
