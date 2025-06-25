@@ -111,4 +111,3 @@ INSERT INTO proveedor VALUES
 (8, 'Salsas La Roca', 'Cra 9 #22-60, Barranquilla', 'ventas@salsalaroca.com', 3106785432, 3),
 (9, 'Verduras del Campo', 'Cra 11 #25-60, Villavicencio', 'ventas@verdelcampo.com', 3137894560, 3),
 (10, 'Quesos el Paisa', 'Cll 19 #9-90, Manizales', 'info@quesospaisa.com', 3213214321, 3);
-
