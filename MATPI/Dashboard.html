@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,150 +8,120 @@
     <link rel="icon" href="img/Favicon.png" />
     <link rel="stylesheet" href="css/cssDashboard.css">
 </head>
+
 <body>
-<!-- SIDEBAR OVERLAY -->
+    <!-- SIDEBAR OVERLAY -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- SIDEBAR NAVIGATION -->
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <img src="img/Logomatpi.png" alt="Logo Matpi">
-            <h3>Panel Matpi</h3>
-        </div>
-        <div class="sidebar-menu">
-            <a href="#" class="menu-item active">
-                <i>🏠</i>
-                <span>Dashboard</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>🍔</i>
-                <span>Productos</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>📋</i>
-                <span>Pedidos</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>👥</i>
-                <span>Clientes</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>📊</i>
-                <span>Reportes</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>💰</i>
-                <span>Ventas</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>🚚</i>
-                <span>Entregas</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>⭐</i>
-                <span>Reseñas</span>
-            </a>
-            <a href="#" class="menu-item">
-                <i>⚙️</i>
-                <span>Configuración</span>
-            </a>
-            <a href="inicio_de_sesion.html" class="menu-item">
-                <i>🚪</i>
-                <span>Cerrar Sesión</span>
-            </a>
-        </div>
-    </nav>
+
 
     <!-- HEADER -->
     <header class="header">
-        <img src="img/Logomatpi.png" alt="Logo Matpi" class="logo" id="sidebarToggle">
-        <div class="dashboard-title">Panel de Control</div>
-        <div class="time-display" id="timeDisplay"></div>
-        <div class="icon"><a href="inicio_de_sesion.html">👤</a></div>
+        <img src="img/Logomatpi.png" alt="Logo Matpi" class="logo">
+
+        <nav class="top-nav">
+            <a href="#dashboard" class="nav-link active">🏠 Dashboard</a>
+            <a href="#formProducto" class="nav-link">🍔 Productos</a>
+            <a href="#formPedido" class="nav-link">📋 Pedidos</a>
+            <a href="#formCliente" class="nav-link">👥 Clientes</a>
+            <a href="#formReporte" class="nav-link">📊 Reportes</a>
+            <a href="#formVenta" class="nav-link">💰 Ventas</a>
+            <a href="#formEntrega" class="nav-link">🚚 Entregas</a>
+            <a href="#formResena" class="nav-link">⭐ Reseñas</a>
+            <a href="#formConfiguracion" class="nav-link">⚙️ Configuración</a>
+        </nav>
+
+        <div class="icon">
+            <a href="inicio_de_sesion.html">👤</a>
+        </div>
     </header>
+
 
     <!-- DASHBOARD -->
     <main class="dashboard">
-        <div class="dashboard-header">
-            <h1>🍔 Dashboard Matpi</h1>
-            <p>Panel de control de ventas y estadísticas</p>
-        </div>
+        <section id="dashboard" class="formulario-seccion">
+            <div class="dashboard-header">
+                <h1>🍔 Dashboard Matpi</h1>
+                <p>Panel de control de ventas y estadísticas</p>
+            </div>
 
-        <!-- ESTADÍSTICAS PRINCIPALES -->
-        <section class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">🍔</div>
-                <div class="stat-number" id="totalVentas">156</div>
-                <div class="stat-label">Hamburguesas Vendidas Hoy</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">💰</div>
-                <div class="stat-number" id="ingresos">$234,500</div>
-                <div class="stat-label">Ingresos del Mes</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">👥</div>
-                <div class="stat-number" id="clientes">89</div>
-                <div class="stat-label">Clientes Atendidos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⭐</div>
-                <div class="stat-number" id="rating">4.8</div>
-                <div class="stat-label">Calificación Promedio</div>
-            </div>
-        </section>
+            <!-- ESTADÍSTICAS PRINCIPALES -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🍔</div>
+                    <div class="stat-number" id="totalVentas">156</div>
+                    <div class="stat-label">Hamburguesas Vendidas Hoy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-number" id="ingresos">$234,500</div>
+                    <div class="stat-label">Ingresos del Mes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number" id="clientes">89</div>
+                    <div class="stat-label">Clientes Atendidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" id="rating">4.8</div>
+                    <div class="stat-label">Calificación Promedio</div>
+                </div>
+            </section>
 
-        <!-- GRÁFICOS Y ACTIVIDAD -->
-        <section class="main-content">
-            <div class="content-card">
-                <h3 class="content-title">Actividad Reciente</h3>
-                <div class="activity-item">
-                    <div class="activity-icon">🍔</div>
-                    <div class="activity-content">
-                        <h4>Nueva orden: Matpi L</h4>
-                        <p>Hace 2 minutos</p>
+
+            <!-- GRÁFICOS Y ACTIVIDAD -->
+            <section class="main-content">
+                <div class="content-card">
+                    <h3 class="content-title">Actividad Reciente</h3>
+                    <div class="activity-item">
+                        <div class="activity-icon">🍔</div>
+                        <div class="activity-content">
+                            <h4>Nueva orden: Matpi L</h4>
+                            <p>Hace 2 minutos</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">⭐</div>
+                        <div class="activity-content">
+                            <h4>Reseña 5 estrellas</h4>
+                            <p>Hace 5 minutos</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">🚚</div>
+                        <div class="activity-content">
+                            <h4>Pedido entregado</h4>
+                            <p>Hace 8 minutos</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <h4>Cliente nuevo registrado</h4>
+                            <p>Hace 12 minutos</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">💰</div>
+                        <div class="activity-content">
+                            <h4>Pago procesado: $25,000</h4>
+                            <p>Hace 15 minutos</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">🔔</div>
+                        <div class="activity-content">
+                            <h4>Notificación: Stock bajo</h4>
+                            <p>Hace 20 minutos</p>
+                        </div>
                     </div>
                 </div>
-                <div class="activity-item">
-                    <div class="activity-icon">⭐</div>
-                    <div class="activity-content">
-                        <h4>Reseña 5 estrellas</h4>
-                        <p>Hace 5 minutos</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">🚚</div>
-                    <div class="activity-content">
-                        <h4>Pedido entregado</h4>
-                        <p>Hace 8 minutos</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">👤</div>
-                    <div class="activity-content">
-                        <h4>Cliente nuevo registrado</h4>
-                        <p>Hace 12 minutos</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">💰</div>
-                    <div class="activity-content">
-                        <h4>Pago procesado: $25,000</h4>
-                        <p>Hace 15 minutos</p>
-                    </div>
-                </div>
-                <div class="activity-item">
-                    <div class="activity-icon">🔔</div>
-                    <div class="activity-content">
-                        <h4>Notificación: Stock bajo</h4>
-                        <p>Hace 20 minutos</p>
-                    </div>
-                </div>
-            </div>
+            </section>
         </section>
 
         <!-- PRODUCTOS MÁS VENDIDOS -->
-        <section class="productos-dashboard">
+        <section class="productos-dashboard" id="dashboard">
             <h2>Productos Más Vendidos</h2>
             <div class="producto-lista">
                 <div class="producto">
@@ -181,7 +152,7 @@
         </section>
 
         <!-- METAS Y PROGRESO -->
-        <section class="progress-section">
+        <section class="progress-section" id="dashboard">
             <div class="progress-card">
                 <h3 class="chart-title">Meta Mensual de Ventas</h3>
                 <p>$300,000 objetivo</p>
@@ -190,7 +161,7 @@
                 </div>
                 <p><strong>$234,500</strong> completado (78%)</p>
             </div>
-            
+
             <div class="progress-card">
                 <h3 class="chart-title">Satisfacción del Cliente</h3>
                 <p>95% objetivo</p>
@@ -199,7 +170,7 @@
                 </div>
                 <p><strong>96%</strong> satisfacción actual</p>
             </div>
-            
+
             <div class="progress-card">
                 <h3 class="chart-title">Pedidos Completados</h3>
                 <p>200 pedidos meta diaria</p>
@@ -209,6 +180,173 @@
                 <p><strong>156</strong> pedidos completados</p>
             </div>
         </section>
+        <section class="formulario-seccion" id="formProducto">
+            <h2>Registrar Nuevo Producto</h2>
+            <form class="formulario" id="formProducto">
+                <label for="nombreProducto">Nombre del Producto:</label>
+                <input type="text" id="nombreProducto" name="nombreProducto" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
+
+                <label for="precio">Precio ($COP):</label>
+                <input type="number" id="precio" name="precio" min="0" step="100" required>
+
+                <label for="imagen">Imagen del producto:</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*">
+
+                <button type="submit" class="btn-detalle">Registrar Producto</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formPedido">
+            <h2>Registrar Pedido</h2>
+            <form class="formulario" id="formPedido">
+                <label for="clientePedido">Cliente:</label>
+                <input type="text" id="clientePedido" name="clientePedido" required>
+
+                <label for="productoPedido">Producto:</label>
+                <input type="text" id="productoPedido" name="productoPedido" required>
+
+                <label for="cantidadPedido">Cantidad:</label>
+                <input type="number" id="cantidadPedido" name="cantidadPedido" min="1" required>
+
+                <label for="fechaPedido">Fecha del pedido:</label>
+                <input type="date" id="fechaPedido" name="fechaPedido" required>
+
+                <label for="estadoPedido">Estado:</label>
+                <select id="estadoPedido" name="estadoPedido">
+                    <option value="pendiente">Pendiente</option>
+                    <option value="procesado">Procesado</option>
+                    <option value="entregado">Entregado</option>
+                </select>
+
+                <button type="submit">Registrar Pedido</button>
+            </form>
+        </section>
+
+        <section class="formulario-seccion" id="formCliente">
+            <h2>Registrar Nuevo Cliente</h2>
+            <form class="formulario" id="formCliente">
+                <label for="nombreCliente">Nombre completo:</label>
+                <input type="text" id="nombreCliente" name="nombreCliente" required>
+
+                <label for="correoCliente">Correo electrónico:</label>
+                <input type="email" id="correoCliente" name="correoCliente" required>
+
+                <label for="telefonoCliente">Teléfono:</label>
+                <input type="tel" id="telefonoCliente" name="telefonoCliente" required>
+
+                <label for="direccionCliente">Dirección:</label>
+                <input type="text" id="direccionCliente" name="direccionCliente" required>
+
+                <button type="submit" class="btn-detalle">Registrar Cliente</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formReporte">
+            <h2>Generar Reporte</h2>
+            <form class="formulario" id="formReporte">
+                <label for="tipoReporte">Tipo de reporte:</label>
+                <select id="tipoReporte" name="tipoReporte" required>
+                    <option value="ventas">Ventas</option>
+                    <option value="clientes">Clientes</option>
+                    <option value="productos">Productos</option>
+                    <option value="entregas">Entregas</option>
+                </select>
+
+                <label for="fechaInicio">Desde:</label>
+                <input type="date" id="fechaInicio" name="fechaInicio" required>
+
+                <label for="fechaFin">Hasta:</label>
+                <input type="date" id="fechaFin" name="fechaFin" required>
+
+                <button type="submit">Generar Reporte</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formVenta">
+            <h2>Registrar Venta</h2>
+            <form class="formulario" id="formVenta">
+                <label for="productoVenta">Producto vendido:</label>
+                <input type="text" id="productoVenta" name="productoVenta" required>
+
+                <label for="cantidadVenta">Cantidad:</label>
+                <input type="number" id="cantidadVenta" name="cantidadVenta" min="1" required>
+
+                <label for="totalVenta">Total ($COP):</label>
+                <input type="number" id="totalVenta" name="totalVenta" min="0" step="100" required>
+
+                <label for="fechaVenta">Fecha de la venta:</label>
+                <input type="date" id="fechaVenta" name="fechaVenta" required>
+
+                <button type="submit">Registrar Venta</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formEntrega">
+            <h2>Registrar Entrega</h2>
+            <form class="formulario" id="formEntrega">
+                <label for="pedidoEntrega">Pedido ID:</label>
+                <input type="text" id="pedidoEntrega" name="pedidoEntrega" required>
+
+                <label for="direccionEntrega">Dirección de entrega:</label>
+                <input type="text" id="direccionEntrega" name="direccionEntrega" required>
+
+                <label for="fechaEntrega">Fecha de entrega:</label>
+                <input type="date" id="fechaEntrega" name="fechaEntrega" required>
+
+                <label for="estadoEntrega">Estado de entrega:</label>
+                <select id="estadoEntrega" name="estadoEntrega">
+                    <option value="en_camino">En camino</option>
+                    <option value="entregado">Entregado</option>
+                    <option value="fallido">Fallido</option>
+                </select>
+
+                <button type="submit">Registrar Entrega</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formResena">
+            <h2>Gestión de Reseñas</h2>
+            <form class="formulario">
+                <label for="clienteResena">Cliente:</label>
+                <input type="text" id="clienteResena" name="clienteResena" required>
+
+                <label for="comentarioResena">Comentario:</label>
+                <textarea id="comentarioResena" name="comentarioResena" rows="3" required></textarea>
+
+                <label for="puntuacionResena">Puntuación:</label>
+                <select id="puntuacionResena" name="puntuacionResena" required>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️ (5)</option>
+                    <option value="4">⭐️⭐️⭐️⭐️ (4)</option>
+                    <option value="3">⭐️⭐️⭐️ (3)</option>
+                    <option value="2">⭐️⭐️ (2)</option>
+                    <option value="1">⭐️ (1)</option>
+                </select>
+
+                <button type="submit">Guardar Reseña</button>
+            </form>
+        </section>
+        <section class="formulario-seccion" id="formConfiguracion">
+            <h2>Configuración General</h2>
+            <form class="formulario">
+                <label for="nombreNegocio">Nombre del negocio:</label>
+                <input type="text" id="nombreNegocio" name="nombreNegocio" value="Matpi" required>
+
+                <label for="correoContacto">Correo de contacto:</label>
+                <input type="email" id="correoContacto" name="correoContacto" required>
+
+                <label for="telefonoContacto">Teléfono de contacto:</label>
+                <input type="tel" id="telefonoContacto" name="telefonoContacto" required>
+
+                <label for="modoOscuro">Modo oscuro:</label>
+                <select id="modoOscuro" name="modoOscuro">
+                    <option value="activado">Activado</option>
+                    <option value="desactivado" selected>Desactivado</option>
+                </select>
+
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </section>
+
+
+
     </main>
 
     <!-- FOOTER -->
@@ -221,5 +359,38 @@
     </footer>
 
     <script src="Dashbrd.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll(".nav-link");
+            const sections = document.querySelectorAll("section.formulario-seccion, #dashboard");
+
+            function showSection(id) {
+                sections.forEach((section) => {
+                    section.style.display = "none";
+                });
+
+                const target = document.querySelector(`#${id}`);
+                if (target) target.style.display = "block";
+            }
+
+            // Inicialmente mostrar solo el dashboard
+            showSection("dashboard");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // Remover clase activa
+                    links.forEach(l => l.classList.remove("active"));
+                    this.classList.add("active");
+
+                    // Obtener el id del href sin el #
+                    const id = this.getAttribute("href").substring(1);
+                    showSection(id);
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
