@@ -1,0 +1,66 @@
+/* ===== BLOG MATPI ===== */
+#blog h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+
+#blog .producto {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+#blog .producto:hover {
+  transform: translateY(-5px);
+}
+
+#blog .producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+#blog .producto-info {
+  padding: 15px;
+  text-align: left;
+}
+
+#blog .producto-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+#blog .producto-info p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+#blog .btn-detalle {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#blog .btn-detalle:hover {
+  background-color: #e68a00;
+}
+
+/* Responsive Blog */
+@media (max-width: 768px) {
+  #blog .producto {
+    width: 100%;
+  }
+}
