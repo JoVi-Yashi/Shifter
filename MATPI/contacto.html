@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contáctanos para pedidos, sugerencias o cualquier inquietud.">
+  <title>Contacto - Matpi</title>
+  <link rel="icon" href="img/Favicon.png" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== CONTACTO ===== */
+.contacto {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.contacto h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.contacto p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.formulario-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-contacto label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  resize: vertical;
+}
+
+.formulario-contacto button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.formulario-contacto button:hover {
+  background-color: #e68a00;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <img src="img/Logomatpi.png" alt="Logo" class="logo">
+    <div class="icon"><a href="inicio_de_sesion.html">👤</a></div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main>
+    <section class="contacto">
+      <h2>Contáctanos</h2>
+      <p>¿Tienes preguntas, sugerencias o deseas hacer un pedido especial? ¡Escríbenos!</p>
+      <form class="formulario-contacto" action="mailto:contacto@matpi.com" method="post" enctype="text/plain">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit" class="btn-detalle">Enviar mensaje</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Matpi. Todos los derechos reservados.</p>
+    <ul class="footer-links">
+      <li><a href="Policys.html">Política de privacidad</a></li>
+      <li><a href="Useterms.html">Términos de uso</a></li>
+    </ul>
+    <div class="social-login">
+      <p>Síguenos en:</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Matpiii/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/matpiii/" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+          <span>Instagram</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=%2B573138525370" target="_blank" rel="noopener">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
