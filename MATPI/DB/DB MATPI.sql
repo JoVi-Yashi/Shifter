@@ -4,92 +4,95 @@ use MATPI;
 /*  -------------------------------------------------------------------------------------  */
 /*  --------------------------------------Estructura-------------------------------------  */
 /*  -------------------------------------------------------------------------------------  */
-
-create table usuario(
-id tinyint unsigned primary key not null ,
-nombre_completo varchar(255) not null,
-contraseña varchar(255) not null,
-correo varchar(255) not null,
-telefono int unsigned not null,
-direccion varchar(255) not null,
-fecha_nacimiento date null, 
-estado boolean not null,
-rol enum('administrador', 'empleado', 'cliente' ) not null
-) ;
-
-create table fidelizacion(
-id tinyint unsigned primary key not null,
-numero_visitas tinyint unsigned not null,
-fecha_inicio date not null,
-cantidad_logros tinyint not null,
-id_usuario tinyint unsigned not null,
-foreign key (id_usuario) references usuario (id)
+CREATE TABLE usuario (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    nombre_completo VARCHAR(60) NOT NULL,
+    contraseña VARCHAR(20) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    telefono BIGINT NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE NULL, 
+    estado BOOLEAN NOT NULL,
+    rol ENUM('administrador', 'empleado', 'cliente') NOT NULL
 );
 
-create table inventario(
-id tinyint unsigned primary key not null,
-nombre_producto varchar(255) not null,
-descripcion varchar(255) not null,
-cantidad tinyint unsigned not null,
-valor mediumint unsigned not null,
-categoria varchar(255) not null
+CREATE TABLE pedido (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    descripcion varchar (150) NOT NULL,
+    fecha DATE NOT NULL,
+    estado BOOLEAN NOT NULL,
+    valor MEDIUMINT UNSIGNED NOT NULL,
+    id_usuario TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
-create table reserva(
-id tinyint unsigned primary key not null,
-fecha date not null,
-estado boolean not null,
-id_usuario tinyint unsigned not null,
-foreign key (id_usuario) references usuario (id),
-cotizacion_inventario tinyint unsigned not null,
-foreign key (cotizacion_inventario) references inventario (id)
+CREATE TABLE reserva (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    fecha DATE NOT NULL,
+    estado BOOLEAN NOT NULL,
+    id_usuario TINYINT UNSIGNED NOT NULL,
+    id_pedido TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id)
 );
 
-create table pedido(
-id tinyint unsigned primary key not null,
-fecha date not null,
-estado boolean not null,
-valor mediumint unsigned not null,
-id_usuario tinyint unsigned not null,
-foreign key (id_usuario) references usuario (id)
+CREATE TABLE factura (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    cantidad TINYINT(20) UNSIGNED NOT NULL,
+    valor_total MEDIUMINT UNSIGNED NOT NULL,
+    iva DECIMAL(10,2) NOT NULL,
+    id_pedido TINYINT UNSIGNED NOT NULL,
+    id_usuario TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
-create table factura(
-id_detalles tinyint unsigned primary key not null,
-cantidad tinyint unsigned not null,
-valor_total mediumint unsigned not null,
-iva float not null,
-id_pedido tinyint unsigned not null,
-id_inventario tinyint unsigned not null,
-foreign key (id_pedido) references pedido(id),
-foreign key(id_inventario) references inventario(id)
+CREATE TABLE materia_prima (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    cantidad TINYINT UNSIGNED NOT NULL,
+    fecha_ingreso DATE NOT NULL,
+    fecha_vencimiento DATE NOT NULL
 );
 
-create table materia_prima(
-id tinyint unsigned primary key not null,
-descripcion varchar(255) not null,
-cantidad tinyint unsigned not null,
-fecha_ingreso date not null,
-fecha_vencimiento date not null
+CREATE TABLE producto (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    nombre_producto VARCHAR(10) NOT NULL,
+    descripcion VARCHAR(150) NOT NULL,
+    cantidad TINYINT UNSIGNED NOT NULL,
+    valor MEDIUMINT UNSIGNED NOT NULL,
+    categoria VARCHAR(20) NOT NULL,
+    id_reserva TINYINT UNSIGNED NOT NULL,
+    id_materia_prima TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_reserva) REFERENCES reserva(id),
+    FOREIGN KEY (id_materia_prima) REFERENCES materia_prima(id)
 );
 
-create table proveedor(
-id tinyint unsigned primary key not null,
-nombre varchar(255) not null,
-direccion varchar(255) not null,
-correo varchar(255) not null,
-telefono bigint(255) not null,
-id_usuario tinyint unsigned not null,
-foreign key (id_usuario) references usuario(id)
+CREATE TABLE proveedor (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+    direccion VARCHAR(100) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    telefono BIGINT NOT NULL,
+    id_usuario TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );
 
-create table detalles_suministra(
-id tinyint unsigned primary key  not null,
-id_proveedor tinyint unsigned not null,
-id_materia_prima tinyint unsigned not null,
-cantidad mediumint unsigned not null,
-foreign key(id) references proveedor(id),
-foreign key(id) references materia_prima(id)
+CREATE TABLE detalles_suministra (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    id_proveedor TINYINT UNSIGNED NOT NULL,
+    id_materia_prima TINYINT UNSIGNED NOT NULL,
+    cantidad MEDIUMINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_proveedor) REFERENCES proveedor(id),
+    FOREIGN KEY (id_materia_prima) REFERENCES materia_prima(id)
+);
+
+CREATE TABLE detalles_agrega (
+    id TINYINT UNSIGNED PRIMARY KEY NOT NULL,
+    id_materia_prima TINYINT UNSIGNED NOT NULL,
+    id_producto TINYINT UNSIGNED NOT NULL,
+    FOREIGN KEY (id_materia_prima) REFERENCES materia_prima(id),
+    FOREIGN KEY (id_producto) REFERENCES producto(id)
 );
 
 
@@ -98,245 +101,152 @@ foreign key(id) references materia_prima(id)
 /*  --------------------------------------vistas-----------------------------------------  */
 /*  -------------------------------------------------------------------------------------  */
 
--- Vista de usuarios con información de fidelización
-CREATE VIEW vista_usuario_fidelizacion AS
-SELECT 
-    u.id AS id_usuario,
-    u.nombre_completo,
-    f.numero_visitas,
-    f.cantidad_logros,
-    f.fecha_inicio
+-- Vista de usuarios activos con su rol
+CREATE VIEW vista_usuarios_activos AS
+SELECT id, nombre_completo, correo, rol
+FROM usuario
+WHERE estado = true;
+
+-- Vista de pedidos realizados por cada usuario con sus datos de contacto
+CREATE VIEW vista_pedidos_por_usuario AS
+SELECT u.nombre_completo, u.correo, u.telefono, p.id AS id_pedido, p.fecha, p.valor
 FROM usuario u
-JOIN fidelizacion f ON u.id = f.id_usuario;
+JOIN pedido p ON u.id = p.id_usuario;
 
-
--- Vista de reservas con información del producto reservado
-CREATE VIEW vista_reservas_productos AS
-SELECT 
-    r.id AS id_reserva,
-    r.fecha,
-    r.estado,
-    u.nombre_completo AS usuario,
-    i.nombre_producto,
-    i.valor AS valor_producto
+-- Vista de reservas confirmadas con nombre del cliente
+CREATE VIEW vista_reservas_confirmadas AS
+SELECT r.id AS id_reserva, r.fecha, u.nombre_completo
 FROM reserva r
 JOIN usuario u ON r.id_usuario = u.id
-JOIN inventario i ON r.cotizacion_inventario = i.id;
+WHERE r.estado = true;
 
-
--- Vista de pedidos realizados por usuarios
-CREATE VIEW vista_pedidos_usuarios AS
-SELECT 
-    p.id AS id_pedido,
-    p.fecha,
-    p.estado,
-    p.valor,
-    u.nombre_completo
-FROM pedido p
-JOIN usuario u ON p.id_usuario = u.id;
-
--- Vista de facturas con detalle de productos
-CREATE VIEW vista_facturas_detalle AS
-SELECT 
-    f.id_detalles,
-    f.cantidad,
-    f.valor_total,
-    p.fecha AS fecha_pedido,
-    i.nombre_producto,
-    u.nombre_completo AS cliente
+-- Vista de facturación por pedido con total y IVA
+CREATE VIEW vista_facturacion_detallada AS
+SELECT f.id, f.cantidad, f.valor_total, f.iva, u.nombre_completo, p.fecha
 FROM factura f
 JOIN pedido p ON f.id_pedido = p.id
-JOIN inventario i ON f.id_inventario = i.id
-JOIN usuario u ON p.id_usuario = u.id;
+JOIN usuario u ON f.id_usuario = u.id;
+
+-- Vista de productos con su materia prima y categoría
+CREATE VIEW vista_productos_con_materia_prima AS
+SELECT pr.id, pr.nombre_producto, pr.categoria, mp.descripcion AS materia_prima
+FROM producto pr
+JOIN materia_prima mp ON pr.id_materia_prima = mp.id;
+
+-- Vista de materias primas próximas a vencer
+CREATE VIEW vista_materias_primas_a_vencer AS
+SELECT id, descripcion, cantidad, fecha_vencimiento
+FROM materia_prima
+WHERE fecha_vencimiento <= CURDATE() + INTERVAL 7 DAY;
+
+-- Vista de proveedores y los productos que suministran
+CREATE VIEW vista_proveedores_materia_prima AS
+SELECT p.nombre AS proveedor, mp.descripcion AS materia_prima, ds.cantidad
+FROM proveedor p
+JOIN detalles_suministra ds ON p.id = ds.id_proveedor
+JOIN materia_prima mp ON ds.id_materia_prima = mp.id;
+
+-- Vista de productos y sus ingredientes (materias primas)
+CREATE VIEW vista_productos_ingredientes AS
+SELECT pr.nombre_producto, mp.descripcion AS ingrediente
+FROM detalles_agrega da
+JOIN producto pr ON da.id_producto = pr.id
+JOIN materia_prima mp ON da.id_materia_prima = mp.id;
+
+-- 9. Vista del inventario actual de productos
+CREATE VIEW vista_inventario_productos AS
+SELECT nombre_producto, cantidad, valor, categoria
+FROM producto;
+
+-- Vista de usuarios con sus pedidos y facturación total
+CREATE VIEW vista_usuarios_con_facturacion AS
+SELECT u.nombre_completo, p.id AS pedido_id, f.valor_total
+FROM usuario u
+JOIN pedido p ON u.id = p.id_usuario
+JOIN factura f ON f.id_pedido = p.id;
 
 
--- Vista de inventario con cantidad baja
-CREATE VIEW vista_inventario_bajo AS
-SELECT 
-    id,
-    nombre_producto,
-    cantidad,
-    valor,
-    categoria
-FROM inventario
-WHERE cantidad < 5;
-
-
--- Vista de clientes activos
-CREATE VIEW vista_clientes_activos AS
-SELECT 
-    id,
-    nombre_completo,
-    correo,
-    telefono,
-    direccion
-FROM usuario
-WHERE estado = true AND rol = 'cliente';
-
-
--- Vista de empleados o administradores
-CREATE VIEW vista_personal_empresa AS
-SELECT 
-    id,
-    nombre_completo,
-    rol
-FROM usuario
-WHERE rol IN ('empleado', 'administrador');
-
-
--- Vista resumen de fidelización
-CREATE VIEW vista_ranking_fidelizacion AS
-SELECT 
-    u.nombre_completo,
-    f.cantidad_logros,
-    f.numero_visitas
-FROM fidelizacion f
-JOIN usuario u ON f.id_usuario = u.id
-ORDER BY f.cantidad_logros DESC;
-
-
--- Vista de pedidos con su estado en texto
-CREATE VIEW vista_estado_pedidos AS
-SELECT 
-    p.id,
-    u.nombre_completo,
-    p.fecha,
-    CASE 
-        WHEN p.estado = true THEN 'Completado'
-        ELSE 'Pendiente'
-    END AS estado_texto,
-    p.valor
-FROM pedido p
-JOIN usuario u ON p.id_usuario = u.id;
-
-
--- Vista de resumen de facturación por cliente
-CREATE VIEW vista_facturacion_clientes AS
-SELECT 
-    u.nombre_completo,
-    SUM(f.valor_total) AS total_facturado,
-    COUNT(f.id_detalles) AS numero_de_items
-FROM factura f
-JOIN pedido p ON f.id_pedido = p.id
-JOIN usuario u ON p.id_usuario = u.id
-GROUP BY u.id, u.nombre_completo;
 
 /*  -------------------------------------------------------------------------------------  */
 /*  --------------------------------------Triggers---------------------------------------  */
 /*  -------------------------------------------------------------------------------------  */
 
 
--- Trigger para validar correo antes de insertar
 DELIMITER $$
 
-CREATE TRIGGER before_insert_usuario
-BEFORE INSERT ON usuario
+CREATE TRIGGER cancelar_pedido_valor_cero
+BEFORE INSERT ON pedido
 FOR EACH ROW
 BEGIN
-    IF NEW.correo NOT LIKE '%@%' THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'El correo debe contener @';
+    IF NEW.valor = 0 THEN
+        SET NEW.estado = FALSE;
     END IF;
 END$$
 
 DELIMITER ;
 
 
--- Trigger para evitar logros negativos
+-- actualizar el estado del usuario a inactivo si no tiene pedidos
 DELIMITER $$
-
-CREATE TRIGGER before_insert_fidelizacion
-BEFORE INSERT ON fidelizacion
+CREATE TRIGGER inactivar_usuario_sin_pedidos
+AFTER DELETE ON pedido
 FOR EACH ROW
 BEGIN
-    IF NEW.cantidad_logros < 0 THEN
+    IF NOT EXISTS (
+        SELECT 1 FROM pedido WHERE id_usuario = OLD.id_usuario
+    ) THEN
+        UPDATE usuario SET estado = false WHERE id = OLD.id_usuario;
+    END IF;
+END$$
+DELIMITER ;
+
+
+
+-- prevenir que se inserte una materia prima vencida
+DELIMITER $$
+CREATE TRIGGER validar_fecha_vencimiento_mp
+BEFORE INSERT ON materia_prima
+FOR EACH ROW
+BEGIN
+    IF NEW.fecha_vencimiento < CURDATE() THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Los logros no pueden ser negativos';
+        SET MESSAGE_TEXT = 'No se puede ingresar materia prima vencida.';
     END IF;
 END$$
-
 DELIMITER ;
 
 
--- Trigger para registrar cambios de cantidad
-CREATE TABLE inventario_log (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_producto TINYINT,
-    cantidad_anterior TINYINT,
-    cantidad_nueva TINYINT,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
+-- restar automáticamente la cantidad usada de materia prima al crear un producto
 DELIMITER $$
-
-CREATE TRIGGER after_update_inventario
-AFTER UPDATE ON inventario
+CREATE TRIGGER descontar_materia_prima_producto
+AFTER INSERT ON producto
 FOR EACH ROW
 BEGIN
-    IF OLD.cantidad <> NEW.cantidad THEN
-        INSERT INTO inventario_log (id_producto, cantidad_anterior, cantidad_nueva)
-        VALUES (OLD.id, OLD.cantidad, NEW.cantidad);
-    END IF;
+    UPDATE materia_prima
+    SET cantidad = cantidad - NEW.cantidad
+    WHERE id = NEW.id_materia_prima;
 END$$
-
 DELIMITER ;
 
 
--- Trigger para impedir reservas en el pasado
-DELIMITER $$
 
-CREATE TRIGGER before_insert_reserva
-BEFORE INSERT ON reserva
+-- enviar advertencia si un proveedor repite el correo
+DELIMITER $$
+CREATE TRIGGER evitar_correo_duplicado_proveedor
+BEFORE INSERT ON proveedor
 FOR EACH ROW
 BEGIN
-    IF NEW.fecha < CURDATE() THEN
+    IF EXISTS (SELECT 1 FROM proveedor WHERE correo = NEW.correo) THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'No se pueden hacer reservas en fechas pasadas';
+        SET MESSAGE_TEXT = 'El correo del proveedor ya está registrado.';
     END IF;
 END$$
-
 DELIMITER ;
 
 
--- Trigger para registrar pedidos completados
-CREATE TABLE pedido_completado_log (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido TINYINT,
-    fecha_pedido DATE,
-    valor MEDIUMINT,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-DELIMITER $$
-
-CREATE TRIGGER after_insert_pedido
-AFTER INSERT ON pedido
-FOR EACH ROW
-BEGIN
-    IF NEW.estado = TRUE THEN
-        INSERT INTO pedido_completado_log (id_pedido, fecha_pedido, valor)
-        VALUES (NEW.id, NEW.fecha, NEW.valor);
-    END IF;
-END$$
-
-DELIMITER ;
 
 
-DELIMITER $$
 
-CREATE TRIGGER before_insert_factura
-BEFORE INSERT ON factura
-FOR EACH ROW
-BEGIN
-    DECLARE precio_unitario MEDIUMINT;
 
-    SELECT valor INTO precio_unitario
-    FROM inventario
-    WHERE id = NEW.id_inventario;
 
-    IF NEW.valor_total <> (precio_unitario * NEW.cantidad) THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'El valor total no coincide con el producto * cantidad';
-    END IF;
-END$$
-
-DELIMITER ;
