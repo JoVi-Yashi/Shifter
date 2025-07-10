@@ -214,7 +214,7 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 35px;
             margin-bottom: 40px;
         }
 
@@ -294,8 +294,8 @@
         }
 
         .activity-icon {
-            width: 40px;
-            height: 40px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -504,7 +504,7 @@
         }
 
         .formulario-seccion {
-            max-width: 700px;
+            max-width: 860px;
             margin: 40px auto;
             background-color: #fff;
             padding: 30px 25px;
@@ -529,6 +529,7 @@
             color: #333;
         }
 
+        .estadoEntrega
         .formulario input,
         .formulario textarea {
             padding: 10px;
@@ -556,3 +557,106 @@
         .formulario button:hover {
             background-color: #e68a00;
         }
+
+        button > a
+        {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        table{
+            
+            border: 1px, solid,black;
+            
+        }
+        :root {
+            --primary-color: #ff9f00;
+            --secondary-color: #000;
+            --text-color: #333;
+            --font-family: 'Segoe UI', sans-serif;
+            --bg-light: #f5f5f5;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        /* Your other existing styles... */
+
+        /* NEW STYLES FOR TABLES */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        /* Center tables in their containers */
+        .formulario-seccion table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: var(--shadow);
+        }
+
+        .formulario-seccion table th,
+        .formulario-seccion table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .formulario-seccion table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .formulario-seccion table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .formulario-seccion table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Center the sales table specifically */
+        #formVenta .formulario-seccion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #formVenta table {
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        /* Center action buttons in tables */
+        .tabla-usuarios td:last-child {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tabla-usuarios button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tabla-usuarios button:first-child {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .tabla-usuarios button:last-child {
+            background-color: #f44336;
+            color: white;
+        }
+
+        

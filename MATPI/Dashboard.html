@@ -24,10 +24,9 @@
             <a href="#formProducto" class="nav-link">🍔 Productos</a>
             <a href="#formPedido" class="nav-link">📋 Pedidos</a>
             <a href="#formCliente" class="nav-link">👥 Clientes</a>
+             <a href="#formProveedor" class="nav-link">🚚 Proveedores</a>
             <a href="#formReporte" class="nav-link">📊 Reportes</a>
-            <a href="#formVenta" class="nav-link">💰 Ventas</a>
-            <a href="#formEntrega" class="nav-link">🚚 Entregas</a>
-            <a href="#formResena" class="nav-link">⭐ Reseñas</a>
+            <a href="#formVenta" class="nav-link">💰 Facturas</a>
             <a href="#formConfiguracion" class="nav-link">⚙️ Configuración</a>
         </nav>
 
@@ -50,7 +49,7 @@
                 <div class="stat-card">
                     <div class="stat-icon">🍔</div>
                     <div class="stat-number" id="totalVentas">156</div>
-                    <div class="stat-label">Hamburguesas Vendidas Hoy</div>
+                    <div class="stat-label">Pedidos del dia</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">💰</div>
@@ -63,9 +62,9 @@
                     <div class="stat-label">Clientes Atendidos</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">⭐</div>
-                    <div class="stat-number" id="rating">4.8</div>
-                    <div class="stat-label">Calificación Promedio</div>
+                    <div class="stat-icon">🌭</div>
+                    <div class="stat-number" id="clientes">204</div>
+                    <div class="stat-label">Productos totales</div>
                 </div>
             </section>
 
@@ -81,17 +80,11 @@
                             <p>Hace 2 minutos</p>
                         </div>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">⭐</div>
-                        <div class="activity-content">
-                            <h4>Reseña 5 estrellas</h4>
-                            <p>Hace 5 minutos</p>
-                        </div>
-                    </div>
+
                     <div class="activity-item">
                         <div class="activity-icon">🚚</div>
                         <div class="activity-content">
-                            <h4>Pedido entregado</h4>
+                            <h4>Proveedordes</h4>
                             <p>Hace 8 minutos</p>
                         </div>
                     </div>
@@ -189,13 +182,21 @@
                 <label for="descripcion">Descripción:</label>
                 <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
 
-                <label for="precio">Precio ($COP):</label>
+                <label for="precio">Valor ($COP):</label>
                 <input type="number" id="precio" name="precio" min="0" step="100" required>
 
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" step="100" required>
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria">
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Poestres">Postres</option>
+                </select>
                 <label for="imagen">Imagen del producto:</label>
                 <input type="file" id="imagen" name="imagen" accept="image/*">
 
-                <button type="submit" class="btn-detalle">Registrar Producto</button>
+                <button type="submit" class="btn-detalle"><a href="error/error500.html" style=" color: inherit; text-decoration: none;">Registrar Producto</a></button>
             </form>
         </section>
         <section class="formulario-seccion" id="formPedido">
@@ -204,11 +205,13 @@
                 <label for="clientePedido">Cliente:</label>
                 <input type="text" id="clientePedido" name="clientePedido" required>
 
-                <label for="productoPedido">Producto:</label>
-                <input type="text" id="productoPedido" name="productoPedido" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
 
                 <label for="cantidadPedido">Cantidad:</label>
                 <input type="number" id="cantidadPedido" name="cantidadPedido" min="1" required>
+                <label for="precio">Valor ($COP):</label>
+                <input type="number" id="precio" name="precio" min="0" step="100" required>
 
                 <label for="fechaPedido">Fecha del pedido:</label>
                 <input type="date" id="fechaPedido" name="fechaPedido" required>
@@ -220,7 +223,7 @@
                     <option value="entregado">Entregado</option>
                 </select>
 
-                <button type="submit">Registrar Pedido</button>
+                <button type="submit"><a href="error/error500.html" style=" color: inherit; text-decoration: none;">Registrar Pedido</a></button>
             </form>
         </section>
 
@@ -236,12 +239,206 @@
                 <label for="telefonoCliente">Teléfono:</label>
                 <input type="number" id="telefonoCliente" name="telefonoCliente" required>
 
-                <label for="direccionCliente">Dirección:</label>
-                <input type="text" id="direccionCliente" name="direccionCliente" required>
-
-                <button type="submit" class="btn-detalle">Registrar Cliente</button>
+                <button type="submit" class="btn-detalle"><a href="error/error500.html" style=" color: inherit; text-decoration: none;">Registrar Cliente</a></button>
             </form>
+            <br>
+             <section  id="tablaUsuarios">
+        <h2>Listado de Usuarios</h2>
+         <input type="text" id="busquedaUsuario" placeholder="Buscar usuario..." style="margin-top:10px; width:100%; padding:5px;">
+       <br><br>
+         <label for="tipoUsuarioSelect">Seleccionar tipo de usuario:</label>
+        <select id="tipoUsuarioSelect">
+            <option value="cliente">Cliente</option>
+            <option value="empleado">Empleado</option>
+        </select>
+       
+        
+        <div class="table-container">
+            <table id="tablaCliente" class="tabla-usuarios">
+                <thead>
+                    <tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Juan Pérez</td><td>juanp@gmail.com</td><td>3104567890</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+                    <tr><td>Lina Gómez</td><td>lina.g@gmail.com</td><td>3011234567</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+                    <tr><td>Camilo Torres</td><td>camilo.t@gmail.com</td><td>3209988776</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+                </tbody>
+            </table>
+            
+            <table id="tablaEmpleado" class="tabla-usuarios" style="display:none;">
+                <thead>
+                    <tr><th>Nombre</th><th>Cargo</th><th>Correo</th><th>Teléfono</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>María Rodríguez</td><td>Cajera</td><td>maria.r@matpi.com</td><td>3120000001</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+                    <tr><td>Santiago Vargas</td><td>Chef</td><td>santi.v@matpi.com</td><td>3120000002</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
         </section>
+
+          <!-- DASHBOARD -->
+  <main class="dashboard">
+    <!-- ... Secciones existentes ... -->
+
+    <!-- NUEVA SECCIÓN DE USUARIOS -->
+    <section class="formulario-seccion" id="tablaUsuarios">
+      <h2>Listado de Usuarios</h2>
+      <label for="tipoUsuarioSelect">Seleccionar tipo de usuario:</label>
+      <select id="tipoUsuarioSelect">
+        <option value="cliente">Cliente</option>
+        <option value="empleado">Empleado</option>
+      </select>
+      <input type="text" id="busquedaUsuario" placeholder="Buscar usuario..." style="margin-top:10px; width:100%; padding:5px;">
+      <table id="tablaCliente" class="tabla-usuarios" border="1" style="margin-top: 20px; width: 100%;">
+        <thead>
+          <tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Dirección</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Juan Pérez</td><td>juanp@gmail.com</td><td>3104567890</td><td>Calle 12 #34-56</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+          <tr><td>Lina Gómez</td><td>lina.g@gmail.com</td><td>3011234567</td><td>Cra 7 #23-12</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+          <tr><td>Camilo Torres</td><td>camilo.t@gmail.com</td><td>3209988776</td><td>Barrio San Luis</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+        </tbody>
+      </table>
+      <table id="tablaEmpleado" class="tabla-usuarios" border="1" style="display:none; margin-top: 20px; width: 100%;">
+        <thead>
+          <tr><th>Nombre</th><th>Cargo</th><th>Correo</th><th>Teléfono</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>María Rodríguez</td><td>Cajera</td><td>maria.r@matpi.com</td><td>3120000001</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+          <tr><td>Santiago Vargas</td><td>Chef</td><td>santi.v@matpi.com</td><td>3120000002</td><td><button onclick="editarUsuario(this)">Editar</button><button onclick="eliminarUsuario(this)">Eliminar</button></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+
+
+  <!-- SCRIPTS -->
+  <script src="Dashbrd.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const links = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section.formulario-seccion, #dashboard");
+
+      function showSection(id) {
+        sections.forEach(section => section.style.display = "none");
+        const target = document.querySelector(`#${id}`);
+        if (target) target.style.display = "block";
+      }
+
+      showSection("dashboard");
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          links.forEach(l => l.classList.remove("active"));
+          this.classList.add("active");
+          const id = this.getAttribute("href").substring(1);
+          showSection(id);
+        });
+      });
+
+      document.getElementById("tipoUsuarioSelect").addEventListener("change", function () {
+        const tipo = this.value;
+        document.getElementById("tablaCliente").style.display = tipo === "cliente" ? "table" : "none";
+        document.getElementById("tablaEmpleado").style.display = tipo === "empleado" ? "table" : "none";
+      });
+
+      document.getElementById("busquedaUsuario").addEventListener("input", function () {
+        const texto = this.value.toLowerCase();
+        document.querySelectorAll(".tabla-usuarios tbody tr").forEach(tr => {
+          tr.style.display = Array.from(tr.children).some(td => td.textContent.toLowerCase().includes(texto)) ? "" : "none";
+        });
+      });
+    });
+
+    function editarUsuario(boton) {
+      const fila = boton.closest("tr");
+      const celdas = fila.querySelectorAll("td");
+      celdas.forEach((celda, i) => {
+        if (i < celdas.length - 1) {
+          const valor = celda.textContent;
+          celda.innerHTML = `<input value="${valor}" style='width:95%'>`;
+        }
+      });
+      boton.textContent = "Guardar";
+      boton.onclick = function () { guardarUsuario(this); };
+    }
+
+    function guardarUsuario(boton) {
+      const fila = boton.closest("tr");
+      const inputs = fila.querySelectorAll("input");
+      inputs.forEach(input => {
+        const td = input.parentElement;
+        td.textContent = input.value;
+      });
+      boton.textContent = "Editar";
+      boton.onclick = function () { editarUsuario(this); };
+    }
+
+    function eliminarUsuario(boton) {
+      if (confirm("¿Estás seguro de eliminar este usuario?")) {
+        const fila = boton.closest("tr");
+        fila.remove();
+      }
+    }
+  </script>
+
+<section class="formulario-seccion" id="formProveedor">
+        <h2>Registrar Nuevo Proveedor</h2>
+        <form class="formulario" id="formProveedor">
+            <label for="nombreProveedor">Nombre:</label>
+            <input type="text" id="nombreProveedor" name="nombreProveedor" required>
+
+            <label for="contactoProveedor">Dirección:</label>
+            <input type="text" id="contactoProveedor" name="contactoProveedor" required>
+
+            <label for="telefonoProveedor">Teléfono:</label>
+            <input type="tel" id="telefonoProveedor" name="telefonoProveedor" required>
+
+            <label for="emailProveedor">Email:</label>
+            <input type="email" id="emailProveedor" name="emailProveedor">
+
+            <label for="productosProveedor">Productos que suministra:</label>
+            <textarea id="productosProveedor" name="productosProveedor" rows="3"></textarea>
+
+            <button type="submit">Registrar Proveedor</button>
+        </form>
+
+        <h2 style="margin-top: 40px;">Proveedores Registrados</h2>
+        <div class="table-container">
+            <table id="tablaProveedores" class="tabla-usuarios">
+                <thead>
+                    <tr><th>Nombre</th><th>Contacto</th><th>Teléfono</th><th>Email</th><th>Productos</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Distribuidora Alimentos S.A.</td>
+                        <td>Carlos Méndez</td>
+                        <td>3101112222</td>
+                        <td>ventas@alimentos.com</td>
+                        <td>Carnes, Vegetales</td>
+                        <td><button onclick="editarProveedor(this)">Editar</button><button onclick="eliminarProveedor(this)">Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Bebidas Refrescantes Ltda.</td>
+                        <td>Luisa Fernández</td>
+                        <td>3155558888</td>
+                        <td>luisa@bebidas.com</td>
+                        <td>Refrescos, Jugos</td>
+                        <td><button onclick="editarProveedor(this)">Editar</button><button onclick="eliminarProveedor(this)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
         <section class="formulario-seccion" id="formReporte">
             <h2>Generar Reporte</h2>
             <form class="formulario" id="formReporte">
@@ -250,7 +447,6 @@
                     <option value="ventas">Ventas</option>
                     <option value="clientes">Clientes</option>
                     <option value="productos">Productos</option>
-                    <option value="entregas">Entregas</option>
                 </select>
 
                 <label for="fechaInicio">Desde:</label>
@@ -259,70 +455,42 @@
                 <label for="fechaFin">Hasta:</label>
                 <input type="date" id="fechaFin" name="fechaFin" required>
 
-                <button type="submit">Generar Reporte</button>
+                <button type="submit"><a href="error/error500.html" style=" color: inherit; text-decoration: none;">Generar Reporte</a></button>
             </form>
         </section>
-        <section class="formulario-seccion" id="formVenta">
-            <h2>Registrar Venta</h2>
-            <form class="formulario" id="formVenta">
-                <label for="productoVenta">Producto vendido:</label>
-                <input type="text" id="productoVenta" name="productoVenta" required>
+         <section class="formulario-seccion" id="formVenta">
+        <h2>Consultar Ventas</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Valor Total (COP)</th>
+                        <th>Cantidad de Productos</th>
+                        <th>IVA (19%)</th>
+                                                <th>Método de Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>28,560</td><td>2</td><td>4,560</td><td>Efectivo</td></tr>
+                    <tr><td>2</td><td>52,360</td><td>4</td><td>8,360</td><td>Tarjeta de crédito</td></tr>
+                    <tr><td>3</td><td>15,470</td><td>1</td><td>2,470</td><td>Nequi</td></tr>
+                    <tr><td>4</td><td>37,730</td><td>3</td><td>6,030</td><td>Daviplata</td></tr>
+                    <tr><td>5</td><td>44,030</td><td>5</td><td>7,030</td><td>Tarjeta débito</td></tr>
+                    <tr><td>6</td><td>67,830</td><td>6</td><td>10,830</td><td>Efectivo</td></tr>
+                    <tr><td>7</td><td>19,040</td><td>2</td><td>3,040</td><td>Nequi</td></tr>
+                    <tr><td>8</td><td>25,820</td><td>2</td><td>4,120</td><td>Daviplata</td></tr>
+                    <tr><td>9</td><td>76,280</td><td>7</td><td>12,180</td><td>Tarjeta de crédito</td></tr>
+                    <tr><td>10</td><td>32,550</td><td>3</td><td>5,190</td><td>Efectivo</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-                <label for="cantidadVenta">Cantidad:</label>
-                <input type="number" id="cantidadVenta" name="cantidadVenta" min="1" required>
+   
 
-                <label for="totalVenta">Total ($COP):</label>
-                <input type="number" id="totalVenta" name="totalVenta" min="0" step="100" required>
+   
 
-                <label for="fechaVenta">Fecha de la venta:</label>
-                <input type="date" id="fechaVenta" name="fechaVenta" required>
-
-                <button type="submit">Registrar Venta</button>
-            </form>
-        </section>
-        <section class="formulario-seccion" id="formEntrega">
-            <h2>Registrar Entrega</h2>
-            <form class="formulario" id="formEntrega">
-                <label for="pedidoEntrega">Pedido ID:</label>
-                <input type="text" id="pedidoEntrega" name="pedidoEntrega" required>
-
-                <label for="direccionEntrega">Dirección de entrega:</label>
-                <input type="text" id="direccionEntrega" name="direccionEntrega" required>
-
-                <label for="fechaEntrega">Fecha de entrega:</label>
-                <input type="date" id="fechaEntrega" name="fechaEntrega" required>
-
-                <label for="estadoEntrega">Estado de entrega:</label>
-                <select id="estadoEntrega" name="estadoEntrega">
-                    <option value="en_camino">En camino</option>
-                    <option value="entregado">Entregado</option>
-                    <option value="fallido">Fallido</option>
-                </select>
-
-                <button type="submit">Registrar Entrega</button>
-            </form>
-        </section>
-        <section class="formulario-seccion" id="formResena">
-            <h2>Gestión de Reseñas</h2>
-            <form class="formulario">
-                <label for="clienteResena">Cliente:</label>
-                <input type="text" id="clienteResena" name="clienteResena" required>
-
-                <label for="comentarioResena">Comentario:</label>
-                <textarea id="comentarioResena" name="comentarioResena" rows="3" required></textarea>
-
-                <label for="puntuacionResena">Puntuación:</label>
-                <select id="puntuacionResena" name="puntuacionResena" required>
-                    <option value="5">⭐️⭐️⭐️⭐️⭐️ (5)</option>
-                    <option value="4">⭐️⭐️⭐️⭐️ (4)</option>
-                    <option value="3">⭐️⭐️⭐️ (3)</option>
-                    <option value="2">⭐️⭐️ (2)</option>
-                    <option value="1">⭐️ (1)</option>
-                </select>
-
-                <button type="submit">Guardar Reseña</button>
-            </form>
-        </section>
         <section class="formulario-seccion" id="formConfiguracion">
             <h2>Configuración General</h2>
             <form class="formulario">
@@ -341,7 +509,7 @@
                     <option value="desactivado" selected>Desactivado</option>
                 </select>
 
-                <button type="submit">Guardar Cambios</button>
+                <button type="submit"><a href="error/error500.html" style=" color: inherit; text-decoration: none;">Guardar Cambios</a></button>
             </form>
         </section>
 
