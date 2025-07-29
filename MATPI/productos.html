@@ -1,0 +1,62 @@
+<!-- producto.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Producto - Matpi</title>
+    <link rel="stylesheet" href="css/cssDashboard.css">
+</head>
+<body>
+      <header class="header">
+    <img src="img/Logomatpi.png" alt="Logo Matpi" class="logo">
+    <nav class="top-nav">
+      <a href="dashboard.html" class="nav-link active">🏠 Dashboard</a>
+      <a href="productos.html" class="nav-link">🍔 Productos</a>
+      <a href="pedido.html" class="nav-link">📋 Pedidos</a>
+      <a href="cliente.html" class="nav-link">👥 Clientes</a>
+      <a href="proveedores.html" class="nav-link">🚚 Proveedores</a>
+      <a href="reporte.html" class="nav-link">📊 Reportes</a>
+      <a href="facturas.html" class="nav-link">💰 Facturas</a>
+      <a href="configuracion.html" class="nav-link">⚙️ Configuración</a>
+    </nav>
+    <div class="icon">
+      <a href="inicio_de_sesion.html">👤</a>
+    </div>
+  </header>
+<section class="formulario-seccion" id="formProducto">
+    <h2>Registrar Nuevo Producto</h2>
+    <form class="formulario">
+        <label for="nombreProducto">Nombre del Producto:</label>
+        <input type="text" id="nombreProducto" name="nombreProducto" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" rows="3" required></textarea>
+
+        <label for="precio">Valor ($COP):</label>
+        <input type="number" id="precio" name="precio" min="0" step="100" required>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" step="100" required>
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+            <option value="Alimentos">Alimentos</option>
+            <option value="Bebidas">Bebidas</option>
+            <option value="Postres">Postres</option>
+        </select>
+
+        <label for="imagen">Imagen del producto:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+
+        <button type="submit">Registrar Producto</button>
+    </form>
+</section>
+  <footer>
+    <p>© 2025 Matpi. Todos los derechos reservados.</p>
+    <ul class="footer-links">
+      <li><a href="Policys.html">Política de privacidad</a></li>
+      <li><a href="Useterms.html">Términos de uso</a></li>
+    </ul>
+  </footer>
+</body>
+</html>
