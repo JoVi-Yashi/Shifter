@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Ventas</title>
+    <link rel="icon" href="img/Favicon.png" />
+    <link rel="stylesheet" href="css/cssDashboard.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+</head>
+<body>
+    <header class="header">
+    <img src="img/Logomatpi.png" alt="Logo Matpi" class="logo">
+    <nav class="top-nav">
+      <a href="dashboard.html" class="nav-link active">🏠 Dashboard</a>
+      <a href="productos.html" class="nav-link">🍔 Productos</a>
+      <a href="pedidos.html" class="nav-link">📋 Pedidos</a>
+      <a href="clientes.html" class="nav-link">👥 Clientes</a>
+      <a href="proveedores.html" class="nav-link">🚚 Proveedores</a>
+      <a href="reportes.html" class="nav-link">📊 Reportes</a>
+      <a href="facturas.html" class="nav-link">💰 Facturas</a>
+      <a href="configuracion.html" class="nav-link">⚙️ Configuración</a>
+    </nav>
+      <div class="profile-dropdown">
+            <button class="profile-btn">👤</button>
+            <div class="dropdown-content">
+                <a href="perfil.html">Información de perfil</a>
+                <a href="inicio_de_sesion.html">Cerrar sesión</a>
+            </div>
+        </div>
+        <script src="js/dropdown.js"></script>
+  </header>
+    <section class="formulario-seccion" id="formVenta">
+        <h2>Consultar Ventas</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Valor Total (COP)</th>
+                        <th>Cantidad de Productos</th>
+                        <th>IVA (19%)</th>
+                        <th>Método de Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>28,560</td><td>2</td><td>4,560</td><td>Efectivo</td></tr>
+                    <tr><td>2</td><td>52,360</td><td>4</td><td>8,360</td><td>Tarjeta de crédito</td></tr>
+                    <tr><td>3</td><td>15,470</td><td>1</td><td>2,470</td><td>Nequi</td></tr>
+                    <tr><td>4</td><td>37,730</td><td>3</td><td>6,030</td><td>Daviplata</td></tr>
+                    <tr><td>5</td><td>44,030</td><td>5</td><td>7,030</td><td>Tarjeta débito</td></tr>
+                    <tr><td>6</td><td>67,830</td><td>6</td><td>10,830</td><td>Efectivo</td></tr>
+                    <tr><td>7</td><td>19,040</td><td>2</td><td>3,040</td><td>Nequi</td></tr>
+                    <tr><td>8</td><td>25,820</td><td>2</td><td>4,120</td><td>Daviplata</td></tr>
+                    <tr><td>9</td><td>76,280</td><td>7</td><td>12,180</td><td>Tarjeta de crédito</td></tr>
+                    <tr><td>10</td><td>32,550</td><td>3</td><td>5,190</td><td>Efectivo</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+      <script>
+        // Highlight current nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || 
+                   (linkPage === 'formConfiguracion.html' && currentPage === '')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

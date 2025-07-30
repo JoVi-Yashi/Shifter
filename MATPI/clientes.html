@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Cliente</title>
+    <link rel="icon" href="img/Favicon.png" />
+    <link rel="stylesheet" href="css/cssDashboard.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+</head>
+<body>
+   <header class="header">
+    <img src="img/Logomatpi.png" alt="Logo Matpi" class="logo">
+    <nav class="top-nav">
+      <a href="dashboard.html" class="nav-link active">🏠 Dashboard</a>
+      <a href="productos.html" class="nav-link">🍔 Productos</a>
+      <a href="pedidos.html" class="nav-link">📋 Pedidos</a>
+      <a href="clientes.html" class="nav-link">👥 Clientes</a>
+      <a href="proveedores.html" class="nav-link">🚚 Proveedores</a>
+      <a href="reportes.html" class="nav-link">📊 Reportes</a>
+      <a href="facturas.html" class="nav-link">💰 Facturas</a>
+      <a href="configuracion.html" class="nav-link">⚙️ Configuración</a>
+    </nav>
+     <div class="profile-dropdown">
+            <button class="profile-btn">👤</button>
+            <div class="dropdown-content">
+                <a href="perfil.html">Información de perfil</a>
+                <a href="inicio_de_sesion.html">Cerrar sesión</a>
+            </div>
+        </div>
+        <script src="js/dropdown.js"></script>
+  </header>
+    <section class="formulario-seccion" id="formCliente">
+        <h2>Registrar Nuevo Cliente</h2>
+        <form class="formulario" id="formCliente">
+            <label for="nombreCliente">Nombre completo:</label>
+            <input type="text" id="nombreCliente" name="nombreCliente" required>
+
+            <label for="correoCliente">Correo electrónico:</label>
+            <input type="email" id="correoCliente" name="correoCliente" required>
+
+            <label for="telefonoCliente">Teléfono:</label>
+            <input type="number" id="telefonoCliente" name="telefonoCliente" required>
+
+            <button type="submit" class="btn-detalle">Registrar Cliente</button>
+        </form>
+    </section>
+      <script>
+        // Highlight current nav link
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || 
+                   (linkPage === 'formConfiguracion.html' && currentPage === '')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

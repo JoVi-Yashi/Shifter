@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generar Reporte</title>
+    <title>Configuración General</title>
     <link rel="icon" href="img/Favicon.png" />
     <link rel="stylesheet" href="css/cssDashboard.css">
     <link rel="stylesheet" href="css/dropdown.css">
@@ -21,7 +21,7 @@
       <a href="facturas.html" class="nav-link">💰 Facturas</a>
       <a href="configuracion.html" class="nav-link">⚙️ Configuración</a>
     </nav>
-     <div class="profile-dropdown">
+    <div class="profile-dropdown">
             <button class="profile-btn">👤</button>
             <div class="dropdown-content">
                 <a href="perfil.html">Información de perfil</a>
@@ -30,23 +30,25 @@
         </div>
         <script src="js/dropdown.js"></script>
   </header>
-    <section class="formulario-seccion" id="formReporte">
-        <h2>Generar Reporte</h2>
-        <form class="formulario" id="formReporte">
-            <label for="tipoReporte">Tipo de reporte:</label>
-            <select id="tipoReporte" name="tipoReporte" required>
-                <option value="ventas">Ventas</option>
-                <option value="clientes">Clientes</option>
-                <option value="productos">Productos</option>
+    <section class="formulario-seccion" id="formConfiguracion">
+        <h2>Configuración General</h2>
+        <form class="formulario">
+            <label for="nombreNegocio">Nombre del negocio:</label>
+            <input type="text" id="nombreNegocio" name="nombreNegocio" value="Matpi" required>
+
+            <label for="correoContacto">Correo de contacto:</label>
+            <input type="email" id="correoContacto" name="correoContacto" required>
+
+            <label for="telefonoContacto">Teléfono de contacto:</label>
+            <input type="tel" id="telefonoContacto" name="telefonoContacto" required>
+
+            <label for="modoOscuro">Modo oscuro:</label>
+            <select id="modoOscuro" name="modoOscuro">
+                <option value="activado">Activado</option>
+                <option value="desactivado" selected>Desactivado</option>
             </select>
 
-            <label for="fechaInicio">Desde:</label>
-            <input type="date" id="fechaInicio" name="fechaInicio" required>
-
-            <label for="fechaFin">Hasta:</label>
-            <input type="date" id="fechaFin" name="fechaFin" required>
-
-            <button type="submit">Generar Reporte</button>
+            <button type="submit">Guardar Cambios</button>
         </form>
     </section>
       <script>
